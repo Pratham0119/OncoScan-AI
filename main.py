@@ -1,13 +1,16 @@
-import sys
 from src.logger import logging
-from src.exception import CustomException
+from src.utils.common import create_directories
 
 
 if __name__ == "__main__":
-    logging.info("Logging has started successfully.")
 
-    try:
-        a = 1 / 0
-    except Exception as e:
-        logging.info("Division by zero error occurred.")
-        raise CustomException(e, sys)
+    logging.info("Creating test directories")
+
+    create_directories(
+        [
+            "artifacts/data_ingestion",
+            "artifacts/model_trainer"
+        ]
+    )
+
+    logging.info("Directories created successfully")
